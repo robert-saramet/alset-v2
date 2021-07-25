@@ -1,4 +1,4 @@
-![image](https://github.com/robert-saramet/alset-v2/blob/db09ef69e4e6436f0b647ece5fb87bbe2354e2f0/docs/images/1.jpg)
+![image](https://raw.githubusercontent.com/robert-saramet/alset-v2/db09ef69e4e6436f0b647ece5fb87bbe2354e2f0/docs/images/1.jpg)
 
 ### Features
 - [x] Traffic sign detection
