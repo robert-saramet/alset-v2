@@ -70,13 +70,13 @@ The security of Alset is as efficient as it is simple. There are three ways of i
 Every board is connected to the ESP32 via UART (since ESP32 does not properly support I2C slave mode), with the exception of the 328PB, which connects to the 32u4 via I2C and is forwarded to the ESP32 via UART (due to the lack of serial ports). The ESP32 acts as the main hub and logic controller, receiving any data from modules not directly connected to it through the SerialTransfer library. This allows us to update the code in only one place, while still relying on the extra boards, so as not to overload the ESP32, both in terms of processing power and GPIO/UART interfaces. 
 
 ### Parts
-- [Raspberry Pi 3 B (openCV, server)](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
-- [Sparkfun ESP32 Thing (main processor, comms, IMU)](https://www.sparkfun.com/products/13907)
-- [Pololu A-Star Micro 32u4 (motors, ultrasonic & speed sensors](https://www.pololu.com/product/3101)
-- [Pololu A-Star Micro 328PB (GPS, LCD, ultrasonic & voltage/current sensors](https://www.pololu.com/category/239/a-star-328pb-micro)
-- [Maverick Quantum MT (RC car)](https://hpi-racing.ro/automodele-rc/7332-automodel-maverick-quantum-mt-110-brushed-albastru-rtr-rc.html)
-- [TP-Link Portable 4G Router (optional)](https://www.emag.ro/router-wireless-n300-tp-link-3g-4g-portabil-tl-mr3020/pd/EC23TBBBM/)
-- [PS4 DualShock Controller](https://www.playstation.com/en-ro/accessories/dualshock-4-wireless-controller/)
+- [Raspberry Pi 3 B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) (openCV, server)
+- [Sparkfun ESP32 Thing](https://www.sparkfun.com/products/13907) (main processor, comms, IMU)
+- [Pololu A-Star Micro 32u4](https://www.pololu.com/product/3101) (motors, ultrasonic & speed sensors)
+- [Pololu A-Star Micro 328PB](https://www.pololu.com/category/239/a-star-328pb-micro) (GPS, LCD, ultrasonic & voltage/current sensors)
+- [Maverick Quantum MT](https://hpi-racing.ro/automodele-rc/7332-automodel-maverick-quantum-mt-110-brushed-albastru-rtr-rc.html) (RC car)
+- [TP-Link Portable 4G Router](https://www.emag.ro/router-wireless-n300-tp-link-3g-4g-portabil-tl-mr3020/pd/EC23TBBBM/) (optional)
+- [PS4 DualShock Controller](https://www.playstation.com/en-ro/accessories/dualshock-4-wireless-controller/) (primary input)
 - [6x HC-SR04 Ultrasound Sensors](https://cleste.ro/senzor-ultrasonic-hc-sr04.html)
 - [U-blox NEO-6M GPS](https://www.u-blox.com/en/product/neo-6-series)
 - [Adafruit NXP 9DOF IMU](https://www.adafruit.com/product/3463)
@@ -123,4 +123,4 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ### Support us
 - ##### BTC: bc1q9zjrnzd04w27sx4dh0hy9n06hu624dmvjc495wc
-[Wallet](https://postimg.cc/DSPKVM1H)
+![bitcoin](https://postimg.cc/DSPKVM1H)
