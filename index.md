@@ -107,17 +107,18 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ### Roles
 - #### Robert Saramet
-  - Obstacle detection
+  - Controller
   - Pathfinding
   - Communcations
-  - Arduino code
   - Hardware & electronics
+  - Documentation
+  - All arduino code
 - #### Bogdan Maciuca
   - Road/lane following
   - Image recognition
-  - Server
-  - Raspberry Pi code
-  - GPS webapp
+  - GPS navigation webapp
+  - Flask & Node servers
+  - All raspberry pi code
 
 ---
 
