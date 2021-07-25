@@ -118,6 +118,7 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
   - Image recognition
   - GPS navigation webapp
   - Flask & Node servers
+  - Documentation
   - All raspberry pi code
 
 ---
