@@ -62,18 +62,6 @@ The communication with the raspberry pi is done through a Flask server, which ca
 ### Communications
 Every board is connected to the ESP32 via UART (since ESP32 does not properly support I2C slave mode), with the exception of the 328PB, which connects to the 32u4 via I2C and is forwarded to the ESP32 via UART (due to the lack of serial ports). The ESP32 acts as the main hub and logic controller, receiving any data from modules not directly connected to it through the SerialTransfer library. This allows us to update the code in only one place, while still relying on the extra boards, so as not to overload the ESP32, both in terms of processing power and GPIO/UART interfaces. 
 
----
-
-### Third Party
-
-- #### [Mapillary Traffic Sign Dataset](https://www.mapillary.com/dataset/trafficsign)
-- #### [HERE Maps](https://developer.here.com/develop/rest-apis)
-- #### [OpenCV](https://opencv.org/)
-- #### [Cascade Trainer GUI](https://amin-ahmadi.com/cascade-trainer-gui/)
-- #### [PySerial Library](https://github.com/pyserial/pyserial)
-- #### [PS4 Controller Library](https://github.com/aed3/PS4-esp32)
-- #### [TinyGPS++](https://github.com/mikalhart/TinyGPSPlus)
-
 ### Parts
 - [Raspberry Pi 3 B (openCV, server)](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 - [Sparkfun ESP32 Thing (main processor, comms, IMU)](https://www.sparkfun.com/products/13907)
@@ -97,14 +85,27 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ---
 
+### Third Party
+
+- #### [Mapillary Traffic Sign Dataset](https://www.mapillary.com/dataset/trafficsign)
+- #### [HERE Maps](https://developer.here.com/develop/rest-apis)
+- #### [OpenCV](https://opencv.org/)
+- #### [Cascade Trainer GUI](https://amin-ahmadi.com/cascade-trainer-gui/)
+- #### [PySerial Library](https://github.com/pyserial/pyserial)
+- #### [PS4 Controller Library](https://github.com/aed3/PS4-esp32)
+- #### [TinyGPS++](https://github.com/mikalhart/TinyGPSPlus)
+
+
+---
+
 ### Roles
-- #### Robert
+- #### Robert Saramet
   - Obstacle detection
   - Pathfinding
   - Communcations
   - Arduino code
   - Hardware & electronics
-- #### Bogdan
+- #### Bogdan Maciuca
   - Road/lane following
   - Image recognition
   - Server
