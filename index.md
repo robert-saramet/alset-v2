@@ -123,4 +123,4 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ### Support us
 - ##### BTC: bc1q9zjrnzd04w27sx4dh0hy9n06hu624dmvjc495wc
-[![219971756-519102119360658-4905840849781814643-n.png](https://i.postimg.cc/nLCd65GD/219971756-519102119360658-4905840849781814643-n.png)](https://postimg.cc/JyCcXpgr){:height="50%" width="50%"}
+[![219971756-519102119360658-4905840849781814643-n.png](https://i.postimg.cc/nLCd65GD/219971756-519102119360658-4905840849781814643-n.png)](https://postimg.cc/JyCcXpgr)
