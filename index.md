@@ -57,13 +57,14 @@ Alset can be operated using a PS4 controller connected via bluetooth. In this sc
 For GPS navigation, a U-Blox Neo-6M module is connected to the Pololu 328PB, which extracts latitude, longitude, speed and direction information from NMEA sentences. Destination coordinates will be sent by the ESP32 from the Raspberry Pi webapp. Once the waypoint is selected, navigation data/steering information will be obtained through the GPRMB NMEA sentence. For route planning, the starting location is provided by the phone. 
 
 ### Server
-The communication with the server is done via a Flask server, which can be accessed while in close proximity to the car by connecting to its wi-fi router. The webapp allows the user to enter the destination address and if it exists, a route will be chosen by the raspberry pi, and longitude & latitude are passed on to the arduino.
+The communication with the server is done via a Flask server, which can be accessed while in close proximity to the car by connecting to its wi-fi router. The webapp allows the user to enter the destination address and if it exists, a route will be chosen by the raspberry pi, and longitude & latitude are passed on to the arduino. The backend for this is implemented using HERE Maps REST API.
 
 ---
 
 ### Third Party
 
 - #### [Mapillary Traffic Sign Dataset](https://www.mapillary.com/dataset/trafficsign)
+- #### [HERE Maps](https://developer.here.com/develop/rest-apis)
 - #### [OpenCV](https://opencv.org/)
 - #### [Cascade Trainer GUI](https://amin-ahmadi.com/cascade-trainer-gui/)
 - #### [PySerial Library](https://github.com/pyserial/pyserial)
@@ -90,7 +91,8 @@ The communication with the server is done via a Flask server, which can be acces
   - [2x I2C Level Shifters](https://cleste.ro/modul-ic-i2c-nivel-conversie.html)
   - [18650 2P Battery Holder](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
   - [Passive Buzzer](https://cleste.ro/modul-buzzer-pasiv.html)
-  - Some things not currently implemented: LEDs, level shifters, 8p DIP switch, LED bar graph
+  - Some things are not currently implemented:
+  LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ---
 
