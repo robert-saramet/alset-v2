@@ -104,3 +104,8 @@ The communication with the server is done via a Flask server, which can be acces
   - Server
   - Raspberry Pi code
   - GPS webapp
+
+---
+
+### Support us
+- ##### BTC: bc1q9zjrnzd04w27sx4dh0hy9n06hu624dmvjc495wc
