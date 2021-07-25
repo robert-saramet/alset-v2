@@ -70,24 +70,24 @@ The communication with the server is done via a Flask server, which can be acces
 ### Parts
 
 - #### Robot
-  - [Raspberry Pi 3 B](https://cleste.ro/raspberry-pi-3-model-b.html)
-  - [Arduino Mega 2560](https://cleste.ro/placa-de-dezvoltare-compatibila-cu-arduino-mega-2560.html)
-  - [Wemos D1 Mini ESP8266](https://cleste.ro/placa-dezvoltare-esp12-mini-v2.html)
-  - [Chasis & Motors](https://www.optimusdigital.ro/ro/robotica-kit-uri-de-roboti/11883-kit-robot-cu-4-motoare-negru.html)
-  - [L298N Motor Driver](https://cleste.ro/modul-l298n-cu-punte-h-dubla.html)
-  - [U-blox NEO-6M GPS](https://cleste.ro/modul-gps-ublox-neo-6m-cu-antena.html)
-  - [RC522 RFID Reader](https://cleste.ro/modul-rfid-cu-card-si-tag.html)
-  - [Cytron Maker Line Sensor](https://www.optimusdigital.ro/ro/altele/12072-senzori-de-linie-maker-line-pentru-incepatori.html?search_query=maker+line&results=2)
-  - [2x HC-SR04 Ultrasound Sensors](https://cleste.ro/senzor-ultrasonic-hc-sr04.html)
-  - [Collision Switch](https://cleste.ro/modul-impact.html)
+  - [Raspberry Pi 3 B (openCV, server)](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
+  - [Sparkfun ESP32 Thing (main processor, comms, IMU)](https://www.sparkfun.com/products/13907)
+  - [Pololu A-Star Micro 32u4 (motors, ultrasonic & speed sensors](https://www.pololu.com/product/3101)
+  - [Pololu A-Star Micro 328PB (GPS, LCD, ultrasonic & voltage/current sensors](https://www.pololu.com/category/239/a-star-328pb-micro)
+  - [Maverick Quantum MT (RC car)](https://hpi-racing.ro/automodele-rc/7332-automodel-maverick-quantum-mt-110-brushed-albastru-rtr-rc.html)
+  - [TP-Link Portable 4G Router (optional)](https://www.emag.ro/router-wireless-n300-tp-link-3g-4g-portabil-tl-mr3020/pd/EC23TBBBM/)
+  - [PS4 Controller](https://www.playstation.com/en-ro/accessories/dualshock-4-wireless-controller/)
+  - [6x HC-SR04 Ultrasound Sensors](https://cleste.ro/senzor-ultrasonic-hc-sr04.html)
+  - [U-blox NEO-6M GPS](https://www.u-blox.com/en/product/neo-6-series)
+  - [Adafruit NXP 9DOF IMU](https://www.adafruit.com/product/3463)
+  - [2004 I2C LCD](https://cleste.ro/ecran-oled-0-91.html)
+  - [Pololu 3.3V/5V Step-Up Regulator](https://www.pololu.com/product/2872/specs)
   - [TP4056 Battery Charger](https://cleste.ro/modul-incarcare-baterii-litiu-1a-usb-c-tp4056.html)
-  - [2x Panel Switch](https://cleste.ro/buton-panou.html)
-  - [18650 Battery Holder](https://www.emag.ro/suport-acumulator-3-7v-18650-x-4-sloturi-s18650-4/pd/D8C49WBBM/)
-- #### Joystick
-  - [Lolin32 ESP32](https://cleste.ro/placa-dezvoltare-nodemcu-wifi-bluetooth-esp32.html)
-  - [2x PS2 Joystick](https://cleste.ro/modul-joystick-ps2-compatibil-arduino.html)
+  - [2x Switches](https://cleste.ro/buton-panou.html)
+  - [2x I2C Level Shifters](https://cleste.ro/modul-ic-i2c-nivel-conversie.html)
+  - [18650 2P Battery Holder](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
   - [Passive Buzzer](https://cleste.ro/modul-buzzer-pasiv.html)
-  - [SSD 1306 OLED](https://cleste.ro/ecran-oled-0-91.html)
+  - Some things not currently implemented: LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ---
 
