@@ -4,20 +4,20 @@
 - [x] Traffic sign detection
 - [x] Road/lane following
 - [x] Extensive communications
-- [x] Redundant obstacle detection
+- [x] Redundant safety features
 - [x] PS4 controller support
 - [x] GPS navigation webapp
 - [x] Android app
 - [x] Pathfinding
 
 ### To-Do
+- [x] React to other traffic signs
+- [x] Better power management
+- [x] Hardware revision
 - [ ] Crossroad detection & steering
 - [ ] Max speed slider (WIP)
 - [ ] Speed control (WIP)
 - [ ] GPS TTS directions
-- [x] React to other traffic signs
-- [x] Better power management
-- [x] Hardware revision
 
 ---
 
@@ -43,6 +43,9 @@ The HAAR cascades are loaded at runtime by the raspberry pi, which uses opencv t
 
 ### Lane Following
 ############
+
+### Safety
+Three individual switches for motors, arduino circuit and raspberry pi + router allow for easy testing without any risks, as well as disabling features not currently desired (e.g. disabling raspberry pi when not using opencv). If any device loses power while driving or if signal is lost, the car stops immediately.
 
 ### GPS
 For GPS navigation, a U-Blox Neo-6M module is connected to the Pololu 328PB, which extracts latitude, longitude, speed and direction information from NMEA sentences. Destination coordinates will be sent by the ESP32 from the Raspberry Pi webapp. Once the waypoint is selected, navigation data/steering information will be obtained through the GPRMB NMEA sentence. For route planning, the starting location is provided by the phone. 
