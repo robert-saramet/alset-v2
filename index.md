@@ -12,6 +12,8 @@
 - [x] GPS navigation webapp
 - [x] Android app
 - [x] Pathfinding
+- [x] Modularity
+- [x] LCD display
 
 ### To-Do
 - [x] React to other traffic signs
@@ -73,7 +75,7 @@ Every board is connected to the ESP32 via UART (since ESP32 does not properly su
 As you might know, Alset v1 used differential steering and was of much smaller scale. However, since the purpose of this project is to serve as proof-of-concept, we decided to create v2 to be as close as possible to a real car. Using a single motor and Ackermann steering, while also being much larger (1/10 scale), Alset v2 easily reaches that goal.
 
 ### Modularity
-Another enhancement from v1 is the high modularity, enabling simple addition, removal and replacement of parts and providing easy access to everything. The base is attached to the body using the standard rc car system of shell clips, allowing easy *universal* mounting and unmounting within a blink. Furthermore, *all* that is required for Alset to interface with *any* electric RC car is the connection of *just two cables* from the car radio receiver to their socket on the Alset board: the one for the ESC and the one for the servo. Both are then driven by Alset using PWM and PPM (pulse-position modulation).
+Another enhancement from v1 is the high modularity, enabling simple addition, removal and replacement of parts and providing easy access to everything. The base is attached to the body using the standard rc car system of shell clips, allowing easy *universal* mounting and unmounting within a blink. Furthermore, *all* that is required for Alset to interface with *any* electric RC car is the connection of *just two cables* from the car radio receiver to their socket on the Alset board: the one for the ESC and the one for the servo. Both are then driven by Alset using PWM and PPM (pulse-position modulation). Electronics aside, everything is mounted with screws, the batteries are connected with screw terminals and the weight distribution is optimised for the perfect driving experience.
 
 ### Parts
 - [Raspberry Pi 3 B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) (openCV, server)
