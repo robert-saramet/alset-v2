@@ -45,7 +45,7 @@ Alternatively, you can use the unofficial [GUI version](https://amin-ahmadi.com/
 The HAAR cascades are loaded at runtime by the raspberry pi, which uses opencv to recognize the signs captured by the camera. The generated output(position, distance etc) is then processed.
 
 ### Lane Following
-############
+This works only on marked roads. It detects centre lines using Canny edge detection. After processing, a geometric line is generated for determining the car's position relative to the road. 
 
 ### Safety
 Three individual switches for motors, arduino circuit and raspberry pi + router allow for easy testing without any risks, as well as disabling features not currently desired (e.g. disabling raspberry pi when not using opencv). If any device loses power while driving or if signal is lost, the car stops immediately.
