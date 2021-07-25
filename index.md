@@ -105,7 +105,7 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
   - Arduino code
   - Hardware & electronics
 - #### Bogdan
-  - Machine learning
+  - Road/lane following
   - Image recognition
   - Server
   - Raspberry Pi code
