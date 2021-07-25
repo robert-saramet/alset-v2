@@ -76,7 +76,7 @@ The communication with the server is done via a Flask server, which can be acces
   - [Pololu A-Star Micro 328PB (GPS, LCD, ultrasonic & voltage/current sensors](https://www.pololu.com/category/239/a-star-328pb-micro)
   - [Maverick Quantum MT (RC car)](https://hpi-racing.ro/automodele-rc/7332-automodel-maverick-quantum-mt-110-brushed-albastru-rtr-rc.html)
   - [TP-Link Portable 4G Router (optional)](https://www.emag.ro/router-wireless-n300-tp-link-3g-4g-portabil-tl-mr3020/pd/EC23TBBBM/)
-  - [PS4 Controller](https://www.playstation.com/en-ro/accessories/dualshock-4-wireless-controller/)
+  - [PS4 DualShock Controller](https://www.playstation.com/en-ro/accessories/dualshock-4-wireless-controller/)
   - [6x HC-SR04 Ultrasound Sensors](https://cleste.ro/senzor-ultrasonic-hc-sr04.html)
   - [U-blox NEO-6M GPS](https://www.u-blox.com/en/product/neo-6-series)
   - [Adafruit NXP 9DOF IMU](https://www.adafruit.com/product/3463)
