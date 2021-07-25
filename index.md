@@ -107,9 +107,10 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ### Roles
 - #### Robert Saramet
-  - Controller
+  - PS4 Controller
   - Pathfinding
   - Communcations
+  - Bluetooth app
   - Hardware & electronics
   - Documentation
   - All arduino code
