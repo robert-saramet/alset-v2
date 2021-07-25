@@ -47,6 +47,9 @@ The HAAR cascades are loaded at runtime by the raspberry pi, which uses opencv t
 ### Safety
 Three individual switches for motors, arduino circuit and raspberry pi + router allow for easy testing without any risks, as well as disabling features not currently desired (e.g. disabling raspberry pi when not using opencv). If any device loses power while driving or if signal is lost, the car stops immediately.
 
+### Controller
+Alset can be operated using a PS4 controller connected via bluetooth. In this scope, the MAC address of the console bound to the controller must be obtained using [this tool](https://github.com/user-none/sixaxispairer) and assigned to the ESP32. In order to drive forward, hold the right trigger. To brake, hold both the right and left trigger. To reverse, first brake, then hold the left trigger. The acceleration is proportional to the strength applied to the trigger. There is a turbo mode available by holding the triangle button, which increases the minimum and maximum speed. Moreover, by pressing the cross button, the user can switch between fully manual and assisted mode. In fully manual mode, the user controls both the motor throttle and the servo direction. In assisted mode, the pathfinding algorithm controls the direction and the user remains in control of throttle. This is done as an additional safety feature. Regardless of mode, feedback on distance to obstacles is provided to the user in two ways: 
+
 ### GPS
 For GPS navigation, a U-Blox Neo-6M module is connected to the Pololu 328PB, which extracts latitude, longitude, speed and direction information from NMEA sentences. Destination coordinates will be sent by the ESP32 from the Raspberry Pi webapp. Once the waypoint is selected, navigation data/steering information will be obtained through the GPRMB NMEA sentence. For route planning, the starting location is provided by the phone. 
 
