@@ -91,7 +91,7 @@ The communication with the server is done via a Flask server, which can be acces
   - [2x I2C Level Shifters](https://cleste.ro/modul-ic-i2c-nivel-conversie.html)
   - [18650 2P Battery Holder](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
   - [Passive Buzzer](https://cleste.ro/modul-buzzer-pasiv.html)
-  - Some things are not currently implemented:
+  - Some things are not currently implemented:</br>
   LEDs, level shifters, 8p DIP switch, LED bar graph
 
 ---
