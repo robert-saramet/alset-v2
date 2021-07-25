@@ -56,8 +56,8 @@ Alset can be operated using a PS4 controller connected via bluetooth. In this sc
 ### GPS
 - ##### Arduino Side
 For GPS navigation, a U-Blox Neo-6M module is connected to the Pololu 328PB, which extracts latitude, longitude, speed and direction information from NMEA sentences using the TinyGPS++ library. Destination coordinates will be sent by the ESP32 from the Raspberry Pi webapp. Once the waypoint is selected, navigation data/steering information will be obtained through the GPRMB NMEA sentence. For route planning, the starting location is provided by the phone. 
-- ##### Server Side
-The communication with the server is done via a Flask server, which can be accessed while in close proximity to the car by connecting to its wi-fi router. The webapp allows the user to enter the destination address and if it exists, a route will be chosen by the raspberry pi, and longitude & latitude are passed on to the arduino. The backend for this is implemented using HERE Maps REST API.
+- ##### Raspberry Pi Side
+The communication with the raspberry pi is done through a Flask server, which can be accessed while in range of the car by connecting to its wi-fi router. The webapp allows the user to enter the destination address and, should it exist, a route will be selected by the raspberry pi, and longitude & latitude are passed on to the arduino. The backend for this is implemented using HERE Maps REST API.
 
 ### Communications
 Every board is connected to the ESP32 via UART (since ESP32 does not properly support I2C slave mode), with the exception of the 328PB, which connects to the 32u4 via I2C and is forwarded to the ESP32 via UART (due to the lack of serial ports). The ESP32 acts as the main hub and logic controller, receiving any data from modules not directly connected to it through the SerialTransfer library. This allows us to update the code in only one place, while still relying on the extra boards, so as not to overload the ESP32, both in terms of processing power and GPIO/UART interfaces. 
