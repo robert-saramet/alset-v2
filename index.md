@@ -1,24 +1,23 @@
 ![image](https://github.com/robert-saramet/Alset/raw/main/docs/images/014.JPG)
 
 ### Features
-- [x] Stop sign detection (stops for 3 seconds)
-- [x] Line following
-- [x] Returning to line
-- [x] GPIO communications
+- [x] Traffic sign detection
+- [x] Road/lane following
+- [x] Extensive communications
 - [x] Redundant obstacle detection
-- [x] Wireless joystick control
-- [x] Camera pan & tilt
-- [x] Server for picking destination
+- [x] PS4 controller support
+- [x] GPS navigation webapp
+- [x] Android app
 - [x] Pathfinding
 
 ### To-Do
-- [x] Crossroad detection & steering
-- [ ] React to other traffic signs
-- [ ] Positioning via RFID scanner & tags
+- [ ] Crossroad detection & steering
+- [ ] Max speed slider (WIP)
+- [ ] Speed control (WIP)
+- [ ] GPS TTS directions
+- [x] React to other traffic signs
 - [x] Better power management
 - [x] Hardware revision
-- [ ] Produce PCB
-- [ ] Design custom chasis
 
 ---
 
@@ -43,17 +42,13 @@ Alternatively, you can use the unofficial [GUI version](https://amin-ahmadi.com/
 The HAAR cascades are loaded at runtime by the raspberry pi, which uses opencv to recognize the signs captured by the camera. The generated output(position, distance etc) is then processed.
 
 ### Lane Following
-To get the exact position of the car relative to the line, we decided to use a matrix of 5 sensors that emit IR light and measure it's reflection's intensity. 
-It can easily detect crossroads, and can handle small line interruptions.
-Independent of the line sensor, 2 ultrasonic sensors detect distance to objects and stop or steer the car, depending on the distance. 
+############
 
 ### GPS
-At the moment, due to the project's small scale, we use an RFID scanner to simulate a satelite GPS but with much higher accuracy. The intersection grid is mapped using a matrix of RFID stickers. Each sticker is assigned to an intersection, containing information about it's position and speed limit. The user can select a destination using the website hosted on the server. The server then sends the data to the raspberry pi; when it receives the data, it is parsed and a command queue made of broad directions is generated, which the microcontroller can follow.
+For GPS navigation, a U-Blox Neo-6M module is connected to the Pololu 328PB, which extracts latitude, longitude, speed and direction information from NMEA sentences. Destination coordinates will be sent by the ESP32 from the Raspberry Pi webapp. Once the waypoint is selected, navigation data/steering information will be obtained through the GPRMB NMEA sentence. For route planning, the starting location is provided by the phone. 
 
 ### Server
-The server is currently running on node.js express module.
-The security protocol is currently based on a 8 character unique device-specific code that comes with the car from the factory. When the user logs in on the website, they just enter the code, which is checked against the server's database. If the code matches any car, the instructions are sent to it. However, before trying to log in, the car must be connected to the server, or else the code will not be found.
-In the future, we will use MySQL for the database, hash the codes and also design a security protocol against bruteforce attacks (no more than 5 login requests can be sent from the same IP address in 10 minute).
+The communication with the server is done via a Flask server, which can be accessed while in close proximity to the car by connecting to its wi-fi router. The webapp allows the user to enter the destination address and if it exists, a route will be chosen by the raspberry pi, and longitude & latitude are passed on to the arduino.
 
 ---
 
@@ -61,9 +56,10 @@ In the future, we will use MySQL for the database, hash the codes and also desig
 
 - #### [Mapillary Traffic Sign Dataset](https://www.mapillary.com/dataset/trafficsign)
 - #### [OpenCV](https://opencv.org/)
-- #### [PD Controller](https://tutorial.cytron.io/2019/08/21/esp32-pd-line-following-robot-with-maker-line/)
 - #### [Cascade Trainer GUI](https://amin-ahmadi.com/cascade-trainer-gui/)
 - #### [PySerial Library](https://github.com/pyserial/pyserial)
+- #### [PS4 Controller Library](https://github.com/aed3/PS4-esp32)
+- #### [TinyGPS++](https://github.com/mikalhart/TinyGPSPlus)
 
 ### Parts
 
@@ -91,12 +87,14 @@ In the future, we will use MySQL for the database, hash the codes and also desig
 
 ### Roles
 - #### Robert
-  -  Line following
-  - Joystick
   - Obstacle detection
+  - Pathfinding
+  - Communcations
+  - Arduino code
   - Hardware & electronics
 - #### Bogdan
   - Machine learning
   - Image recognition
   - Server
-  - Webpage
+  - Raspberry Pi code
+  - GPS webapp
