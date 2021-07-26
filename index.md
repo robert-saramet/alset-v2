@@ -104,9 +104,8 @@ Debugging Alset v2 is made easy by the board design that allows easy testing of 
 - [2x Switches](https://cleste.ro/buton-panou.html)
 - [2x I2C Level Shifters](https://cleste.ro/modul-ic-i2c-nivel-conversie.html)
 - [18650 2P Battery Holder](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
-- [Passive Buzzer](https://cleste.ro/modul-buzzer-pasiv.html)
 - Some things that are not currently implemented, such as:
-LEDs, level shifters, 8p DIP switch, LED bar graph
+LEDs, level shifters, 8p DIP switch, LED bar graph, buzzer
 
 ---
 
@@ -120,6 +119,23 @@ LEDs, level shifters, 8p DIP switch, LED bar graph
 - #### [PS4 Controller Library](https://github.com/aed3/PS4-esp32)
 - #### [TinyGPS++](https://github.com/mikalhart/TinyGPSPlus)
 
+
+---
+### License
+Copyright 2021 Robert Saramet, Bogdan Maciuca
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ---
 
