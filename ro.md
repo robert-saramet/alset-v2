@@ -36,8 +36,7 @@ Trei intrerupatoare individuale pentru motoare, circuitul cu arduino si raspberr
 ### Detectarea semnelor de circulatie
 Modelul de cascade Haar este utilizat impreuna cu opencv, astfel semnele de circulatie pot fi implementate cu usurinta, folosind [script-urile](https://github.com/robert-saramet/alset-v2/tree/main/tools) pe care le-am dezvoltat pentru extragerea informatiilor din fisierele JSON ale dataset-ului. Pipeline-ul consta in obtinerea unui numar rezonabil de imagini pozitive (500+ imagini care contin semnul in cauza) si imagini negative (care nu contin semnul) macar cat jumatate din numarul de imagini pozitive. Dataset-ul utilizat de noi poate fi gasit [aici](https://www.mapillary.com/dataset/trafficsign) si contine ~40000 de imagini in total, toate etichetate in fisere JSON.
 
-Apoi, un fisier pos.txt trebuie creat, continand nuemele tuturor imaginilor pozitive (acesst lucru se poate realiza cu script-ul `parse_jsons.py`). Acesta va fi utilizat pentru generearea fisierului `.vec`. Pentru asta, veti avea nevoie si de toolkit-ul opencv. Pe sisteme UNIX, manager-ul de pachete poate instala totul, dar pe Windows va trebui sa descarcati [versiunea 3.4.x](https://sourceforge.net/projects/opencvlibrary/files/opencv-win/), nu ultima, intrucat versiunile ulterioare ale openCV nu mai contin toolkit-ul pentru generarea de cascade Haar. Dupa instalarea opencv, sunteti gata sa incepeti. Pentru a genera fisierul `.vec` mentionat anterior, va trebui sa utilizati programul `opencv_createsamples`.
-De exemplu:
+Apoi, un fisier pos.txt trebuie creat, continand nuemele tuturor imaginilor pozitive (acesst lucru se poate realiza cu script-ul `parse_jsons.py`). Acesta va fi utilizat pentru generearea fisierului `.vec`. Pentru asta, veti avea nevoie si de toolkit-ul opencv. Pe sisteme UNIX, manager-ul de pachete poate instala totul, dar pe Windows va trebui sa descarcati [versiunea 3.4.x](https://sourceforge.net/projects/opencvlibrary/files/opencv-win/), nu ultima, intrucat versiunile ulterioare ale openCV nu mai contin toolkit-ul pentru generarea de cascade Haar. Dupa instalarea opencv, sunteti gata sa incepeti. Pentru a genera fisierul `.vec` mentionat anterior, va trebui sa utilizati programul `opencv_createsamples`. De exemplu:
 
 ```
 openv_createsamples -info pos.txt -w 24 -h 24 -num 1000 -vec pos.vec
@@ -51,18 +50,18 @@ opencv_traincascade -data YourCascadeFolder/ -vec pos.vec -bg neg.txt -w 24 -h 2
     
 Documentatie completa asupra acestor comenzi puteti gasi pe [site-ul opencv]( https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html).
 
-Fisierul final `cascade.xml` poate fi gasit in `YourCascadeFolder`, impreuna cu stagiile (`stage0.xml`, `stage1.xml`, `stage2.xml` etc), utilizate principal pentru regresarea cascadei sau **salvarea progresului daca programul se opreste neasteptat**.
+Fisierul final `cascade.xml` poate fi gasit in `YourCascadeFolder`, impreuna cu stagiile (`stage0.xml`, `stage1.xml`, `stage2.xml` etc), utilizate principal pentru regresarea cascadei sau *salvarea progresului daca programul se opreste neasteptat*.
 Alternativ, puteti utiliza [versiunea neoficiala cu GUI](https://amin-ahmadi.com/cascade-trainer-gui/).
 
 Cascadele Haar sunt incarcate la pornire de catre raspberry pi, care utilizeaza opencv pentru a identifica semnele de circulatie vazute de camerea. Datele generate (pozitie, distanta) sunt apoi procesate.
 
-### Lane Following
+### Urmarirea strazii
 Functioneaza doar pe drumuri marcate, detectand linia de centru cu algoritmul Canny pentru detectarea marginilor. Dupa procesare, o dreapta geometrica este generata pentru determinarea pozitiei masinii relativ la drum. 
 
 ### GPS
-- ##### **Arduino Side**
-For GPS navigation, a U-Blox Neo-6M module is connected to the Pololu 328PB, which extracts latitude, longitude, speed and direction information from NMEA sentences using the TinyGPS++ library. Destination coordinates will be sent by the ESP32 from the Raspberry Pi webapp. Once the waypoint is selected, navigation data/steering information will be obtained through the GPRMB NMEA sentence. For route planning, the starting location is provided by the phone. 
-- ##### **Raspberry Pi Side**
+- ##### **Pe arduino**
+Pentru navigare GPS, un modul U-Blox Neo-6M este conectat la Pololu 328PB, care extrage informatiile despre latitudine, longitudine, viteza si directia din propozitiile NMEA folosind biblioteca TinyGPS++. Coordonatele destinatiei vor fi trimise de ESP32 de la webapp-ul de pe raspberry pi. Dupa selectarea destinatiei, informatiile de navigare/viraje sunt obtinute prin propozitia NMEA GPRMB. Pentru planificarea rutei (pe raspberry pi), locatia initiala este oferita de telefon. 
+- ##### **Pe raspberry pi*
 The communication with the raspberry pi is done through a Flask server, which can be accessed while in range of the car by connecting to its wi-fi router. The webapp allows the user to enter the destination address and, should it exist, a route will be selected by the raspberry pi, and longitude & latitude are passed on to the arduino. The backend for this is implemented using HERE Maps REST API.
 
 ### Phone app
