@@ -1,3 +1,3 @@
-## [View English Page](/en)
+## [View English Page](/alset-v2/en)
 ---
-## [Vizitati Pagina In Romana](/ro)
+## [Vizitati Pagina In Romana](/alset-v2/ro)
