@@ -112,7 +112,7 @@ Debugging-ul lui Alset v2 este facut simplu de design-ul placii, care permite te
 - [Incarcator Li-ion TP4056](https://cleste.ro/modul-incarcare-baterii-litiu-1a-usb-c-tp4056.html)
 - [2x Intreupatoare](https://cleste.ro/buton-panou.html)
 - [2x Convertoare Nivel Logic I2C](https://cleste.ro/modul-ic-i2c-nivel-conversie.html)
-- [1Suport Acumulatori 18650 2P](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
+- [1 Suport Acumulatori 18650 2P](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
 - Cateva lucruri care nu sunt inca implementate, precum:
 LED-uri, shift registers, intrerupatoare DIP 8p, bara LED, buzzer
 
