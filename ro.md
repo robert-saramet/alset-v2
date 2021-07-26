@@ -61,8 +61,8 @@ Functioneaza doar pe drumuri marcate, detectand linia de centru cu algoritmul Ca
 ### GPS
 - ##### **Pe arduino**
 Pentru navigare GPS, un modul U-Blox Neo-6M este conectat la Pololu 328PB, care extrage informatiile despre latitudine, longitudine, viteza si directia din propozitiile NMEA folosind biblioteca TinyGPS++. Coordonatele destinatiei vor fi trimise de ESP32 de la webapp-ul de pe raspberry pi. Dupa selectarea destinatiei, informatiile de navigare/viraje sunt obtinute prin propozitia NMEA GPRMB. Pentru planificarea rutei (pe raspberry pi), locatia initiala este oferita de telefon. 
-- ##### **Pe raspberry pi*
-The communication with the raspberry pi is done through a Flask server, which can be accessed while in range of the car by connecting to its wi-fi router. The webapp allows the user to enter the destination address and, should it exist, a route will be selected by the raspberry pi, and longitude & latitude are passed on to the arduino. The backend for this is implemented using HERE Maps REST API.
+- ##### **Pe raspberry pi**
+Comunicarea dintre telefon si raspberry pi se realizeaza printr-un server Flask, care poate fi accesat prin conectarea la router-ul wifi al robotului atunci cand sunteti in proximitatea acestuia. Webapp-ul ii permite utilizatorului sa introduca adresa destinatiei si, daca aceasta este valida, o ruta va fi selectata de raspberry pi, iar latitudinea si longitudinea destinatie sunt transmise la arduino. Backend-ul pentru acestea utilizeaza API-ul REST de la HERE Maps.
 
 ### Phone app
 A phone app made in the Blynk platform is available, providing a joystick, kill switch, and speed slider, along with some features not currently implemented on the arduino side. While both wifi and bluetooth are available, we have found bluetooth to be more reliable, and it also has the added advantage of not requiring an internet connection on the ESP32. While this app remains available for use when lacking a PS4 controller, we have currently abandoned it due to it's unstable connectivity and closed-source nature.
