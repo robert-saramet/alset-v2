@@ -10,7 +10,7 @@
 - [x] Redundant safety features
 - [x] PS4 controller support
 - [x] GPS navigation webapp
-- [x] Android app
+- [x] Phone app
 - [x] Pathfinding
 - [x] Modularity
 - [x] LCD display
