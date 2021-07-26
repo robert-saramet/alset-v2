@@ -150,20 +150,20 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ### Roluri
 - #### Robert Saramet
-  - PS4 Controller
+  - Controller PS4
   - Pathfinding
-  - Communcations
-  - Bluetooth app
-  - Hardware & electronics
-  - Documentation
-  - All arduino code
+  - Comunicatii
+  - App pentru telefon
+  - Hardware & electronica
+  - Documentatie
+  - Tot codul de pe arduino
 - #### Bogdan Maciuca
-  - Road/lane following
-  - Image recognition
-  - GPS navigation webapp
-  - Flask & Node servers
-  - Documentation
-  - All raspberry pi code
+  - Urmarirea strazii
+  - Recunoasterea semnelor
+  - Webapp navigatie GPS
+  - Servere Flask & Node
+  - Documentatie
+  - Tot codul de pe raspberry pi
 
 ---
 
