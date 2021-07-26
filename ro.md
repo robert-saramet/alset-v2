@@ -94,7 +94,7 @@ Exista trei surse de alimentare utilizate pe Alset, in felul urmator: masina rc 
 - circuitul arduino nu poate procura destul curent prin usb, in plus, ar fi nevoie de multe cabluri
 - pentru raspberry pi si router, un powerbank comercial are mai mult sens decat un circuit special
 - mai mult, cele doua dispozitive mentionate mai sus ar putea fi considerate de alti utilizatori si sarite complet
-Pentru a incarca bateriile circuitului arduino, doar conectati o sursa usb obisnuita la modulul de pe placa. PRocedati la fel pentru powerbank. Pentru incarcarea bateriei masinii RC, intrucat exista nenumarate tipuri de incarcatoare, baterii si conectori, si intrucat Alset incearca sa fie cat mai cross-platform, recomandam sa utilizaati hardware OEM pentru incarcarea masinii.
+Pentru a incarca bateriile circuitului arduino, doar conectati o sursa usb obisnuita la modulul de pe placa. Procedati la fel pentru powerbank. Pentru incarcarea bateriei masinii RC, intrucat exista nenumarate tipuri de incarcatoare, baterii si conectori, si intrucat Alset incearca sa fie cat mai cross-platform, recomandam sa utilizaati hardware OEM pentru incarcarea masinii.
 
 ### Debugging
 Debugging-ul lui Alset v2 este facut simplu de design-ul placii, care permite testarea usoara a conexiunilor electrice si indepartarea rapida a componentelor, precum si de flag-ul pentru debugging disponibil pentru activarea comunicatiilor usb, in scopul inspectarii fiecarei valori. Ecranul LCD afiseaza, deasemeanea, multe dintre aceste valori, oferind insight util fara nevoia de un PC. LED-uri de status vor fi in curand activate pentru a asista suplimentar in acest scop. In plus, toate porturile USB sunt pozitionate in aceeasi parte exterioara a robotului pentru a facilita accesul.
