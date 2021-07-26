@@ -30,27 +30,26 @@
 ### Controller
 Alser poate fi condus cu ajutorul unui controller de PS4 conectat prin bluetooth. In acest scop, adresa MAC a consolei aferente controller-ului trebuie obtinuta cu ajutorul [acestei unelte](https://github.com/user-none/sixaxispairer) si atribuit pe ESP32. Pentru a inainta apasati trigger-ul drept. Pentru a frana, apasati atat trigger-ul drept cat si cel stang. Pentru a merge cu spatele, apasati trigger-ul stang. VIteza este proportionala cu forta aplicata pe trigger. Un mod turbo este disponibil prin apasarea butonului triunghi, crescand viteza minima si maxima. In plus, prin apasarea butonului cruce/x, utilizatorul poate schimba intre modul asistat si modul complet manual. In modul manual, utilizatorul controleaza atat acceleratia la motor cat si directia la servo. In modul asistat, utilizatorul ramane in controlul acceleratiei (pentru siguranta), dar directia este controlata de algoritmul de pathfinding cu senzori ultrasonici. Indiferent de mod, feedback cu privire la distanta pana la obstacole este oferit utilizatorului in doua moduri: in primul rand, led-urile RGB de pe controller isi schimba gradat culoarea de la verde la rosu in functie de distanta pana la cel mai apropiat obnstacol; in al doilea rand, motoarele de vibratie duale ale controller-ului vibreaza proportional cu distanta pana la cel mai apropiat obiect din fiecare directie (fata-stanga si fata-dreapta).
 
-### Safety
+### Siguranta
 Trei intrerupatoare individuale pentru motoare, circuitul cu arduino si raspberry pi + router permit testarea usoara si fara risc, oferind si posibilitatea dezactivarii functiilor momentan nedorite (ex. dezactivarea raspberry pi-ului cand nu se foloseste opencv). Daca orice dispozitiv se opreste in timpul operarii sau daca semnalul este pierdut sau prea invechit, masina opreste instant.
 
-### Traffic Sign Detection
-The Haar cascade model is used with opencv, thus traffic signs can easily be implemented with the scripts in the "tools" folder.
-The pipeline consists of creating a reasonable number of positive samples (500+ images that contain the sign) and at least half the number of negative images (images that do not contain the sign). The dataset we used can be found [here](https://www.mapillary.com/dataset/trafficsign) and consists of ~40000 images in total, all labeled in JSON files.
+### Detectarea semnelor de circulatie
+Modelul de cascade Haar este utilizat impreuna cu opencv, astfel semnele de circulatie pot fi implementate cu usurinta, folosind [script-urile](https://github.com/robert-saramet/alset-v2/tree/main/tools) pe care le-am dezvoltat pentru extragerea informatiilor din fisierele JSON ale dataset-ului. Pipeline-ul consta in obtinerea unui numar rezonabil de imagini pozitive (500+ imagini care contin semnul in cauza) si imagini negative (care nu contin semnul) macar cat jumatate din numarul de imagini pozitive. Dataset-ul utilizat de noi poate fi gasit [aici](https://www.mapillary.com/dataset/trafficsign) si contine ~40000 de imagini in total, toate etichetate in fisere JSON.
 
-Next, a pos.txt file must be created containing all the positive image filenames (this can be achieved via the tools/parse_json.py script). It will be used for creating the .vec file. To do that, you will also need the opencv toolkit. On UNIX systems, the package manager can install everything for you, but on Windows you have to download the [3.4.x version](https://sourceforge.net/projects/opencvlibrary/files/opencv-win/), not the latest one, since future versions no longer contain the cascade training toolkit. After downloading the opencv tools, you are ready to start. To generate the .vec file mentioned earlier, you need to use the `openv_createsamples` program.
-For example:
+Apoi, un fisier pos.txt trebuie creat, continand nuemele tuturor imaginilor pozitive (acesst lucru se poate realiza cu script-ul `parse_jsons.py`). Acesta va fi utilizat pentru generearea fisierului `.vec`. Pentru asta, veti avea nevoie si de toolkit-ul opencv. Pe sisteme UNIX, manager-ul de pachete poate instala totul, dar pe Windows va trebui sa descarcati [versiunea 3.4.x](https://sourceforge.net/projects/opencvlibrary/files/opencv-win/), nu ultima, intrucat versiunile ulterioare ale openCV nu mai contin toolkit-ul pentru generarea de cascade Haar. Dupa instalarea opencv, sunteti gata sa incepeti. Pentru a genera fisierul `.vec` mentionat anterior, va trebui sa utilizati programul `opencv_createsamples`.
+De exemplu:
 
 ```
 openv_createsamples -info pos.txt -w 24 -h 24 -num 1000 -vec pos.vec
 ```
 
-With the .vec file you've just created and a neg.txt file containing all the negative images filenames, you can use the `opencv_traincascade` program:
+Cu fisierul `.vec` pe care tocmai l-ati creat si un fisier `neg.txt` continand numele tuturor fisierelor negative, puteti utiliza programul `opencv_traincascade`:
 
-```shell
+```
 opencv_traincascade -data YourCascadeFolder/ -vec pos.vec -bg neg.txt -w 24 -h 24 -numPos YourNumOfPosImg, -numNeg YourNumOfNegImg
 ```
     
-Complete documention on these commands can be found on the [opencv website]( https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html).
+Documentatie completa asupra acestor comenzi puteti gasi pe [site-ul opencv]( https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html).
 
 The final cascade.xml file can be found in `YourCascadeFolder`, as well as the stages (stage0.xml, stage1.xml, stage2.xml etc), which you won't need at the moment. They are mainly used for downgrading your cascade or for saving progress when the training stops unexpectedly.
 Alternatively, you can use the unofficial [GUI version](https://amin-ahmadi.com/cascade-trainer-gui/).
