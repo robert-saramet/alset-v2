@@ -30,8 +30,13 @@
 ### Controller
 Alset poate fi condus cu ajutorul unui controller de PS4 conectat prin bluetooth. In acest scop, adresa MAC a consolei aferente controller-ului trebuie obtinuta cu ajutorul [acestei unelte](https://github.com/user-none/sixaxispairer) si atribuit pe ESP32. Pentru a inainta apasati trigger-ul drept. Pentru a frana, apasati atat trigger-ul drept cat si cel stang. Pentru a merge cu spatele, apasati trigger-ul stang. VIteza este proportionala cu forta aplicata pe trigger. Un mod turbo este disponibil prin apasarea butonului triunghi, crescand viteza minima si maxima. In plus, prin apasarea butonului cruce/x, utilizatorul poate schimba intre modul asistat si modul complet manual. In modul manual, utilizatorul controleaza atat acceleratia la motor cat si directia la servo. In modul asistat, utilizatorul ramane in controlul acceleratiei (pentru siguranta), dar directia este controlata de algoritmul de pathfinding cu senzori ultrasonici. Indiferent de mod, feedback cu privire la distanta pana la obstacole este oferit utilizatorului in doua moduri: in primul rand, led-urile RGB de pe controller isi schimba gradat culoarea de la verde la rosu in functie de distanta pana la cel mai apropiat obnstacol; in al doilea rand, motoarele de vibratie duale ale controller-ului vibreaza proportional cu distanta pana la cel mai apropiat obiect din fiecare directie (fata-stanga si fata-dreapta).
 
-### Siguranta
-Trei intrerupatoare individuale pentru motoare, circuitul cu arduino si raspberry pi + router permit testarea usoara si fara risc, oferind si posibilitatea dezactivarii functiilor momentan nedorite (ex. dezactivarea raspberry pi-ului cand nu se foloseste opencv). Daca orice dispozitiv se opreste in timpul operarii sau daca semnalul este pierdut sau prea invechit, masina opreste instant.
+### Mecanica & modularitate
+Dupa cum e posibil sa stiti, Alset v1 utiliza virare diferentiala si era la o scara mult mai mica. Insa, scopul acestui proiect fiind de proof-of-concept, am decis sa facem Alset v2 cat mai similar cu o masina reala. Folosind un singur motor si viraje tip Ackermann, in acelasi timp fiind mult mai mare (scara 1/10), Alset v2 atinge acest scop cu usurinta.
+
+O alta imbunatatire fata de v1 este modularitatea inalta, permitand adaugarea, indepartarea si inlocuirea simpla a componentelor si oferind acces usor la tot. Baza robotului este atasata la corpul masiniii folosind sistemul standard de clip-uri prezent pe toate masinile RC, oferind montare si demontare rapida si *universala*. Totul restul este conectat cu suruburi, bateriile la terminale cu surub, iar distrbutia greutatii este optimizata pentru experienta de conducere perfecta.
+
+In plus, *tot* ce este necesar pentru utilizarea lui Alset cu *orice* masina RC electrica este conexiunea a *doar doua cabluri* de la receptorul radio al masinii la soclul lor pe placa Alset: cel pentru ESC (controlor electronic de viteza) si cel pentru servomotor. Amandoua sunt apoi controlate de Alset prin PWM si PPM (pulse-position modulation).
+
 
 ### Detectarea semnelor de circulatie
 Modelul de cascade Haar este utilizat impreuna cu opencv, astfel semnele de circulatie pot fi implementate cu usurinta, folosind [script-urile](https://github.com/robert-saramet/alset-v2/tree/main/tools) pe care le-am dezvoltat pentru extragerea informatiilor din fisierele JSON ale dataset-ului. Pipeline-ul consta in obtinerea unui numar rezonabil de imagini pozitive (500+ imagini care contin semnul in cauza) si imagini negative (care nu contin semnul) macar cat jumatate din numarul de imagini pozitive. Dataset-ul utilizat de noi poate fi gasit [aici](https://www.mapillary.com/dataset/trafficsign) si contine ~40000 de imagini in total, toate etichetate in fisere JSON.
@@ -56,7 +61,10 @@ Alternativ, puteti utiliza [versiunea neoficiala cu GUI](https://amin-ahmadi.com
 Cascadele Haar sunt incarcate la pornire de catre raspberry pi, care utilizeaza opencv pentru a identifica semnele de circulatie vazute de camerea. Datele generate (pozitie, distanta) sunt apoi procesate.
 
 ### Urmarirea strazii
-Functioneaza doar pe drumuri marcate, detectand linia de centru cu algoritmul Canny pentru detectarea marginilor. Dupa procesare, o dreapta geometrica este generata pentru determinarea pozitiei masinii relativ la drum. 
+Functioneaza doar pe drumuri marcate, detectand linia de centru cu algoritmul Canny pentru detectarea marginilor. Dupa procesare (convertirea la grayscale, blurarea si aplicarea de edge detection pentru obtinerea contururilor), o lista de drepte geometrice este generata pentru determinarea pozitiei masinii relativ la drum. In viitor, acele drepte vor fi combinate, iar linia finala va decide directia masinii. Astfel, viraje medii viraje vor functiona fara asistenta de la utilizator. Totusi, pe drumuri care nu sunt marcate corespunzator, se poate obtine comportament neasteptat.
+
+### Siguranta
+Trei intrerupatoare individuale pentru motoare, circuitul cu arduino si raspberry pi + router permit testarea usoara si fara risc, oferind si posibilitatea dezactivarii functiilor momentan nedorite (ex. dezactivarea raspberry pi-ului cand nu se foloseste opencv). Daca orice dispozitiv se opreste in timpul operarii sau daca semnalul este pierdut sau prea invechit, masina opreste instant.
 
 ### GPS
 - ##### **Pe arduino**
@@ -73,15 +81,12 @@ Securitatea lui Alset este eficienta pe cat este de simpla. Exista trei moduri d
 ### Comunicatii
 Toate placile sunt conectate la ESP32 prin UART (intrucat ESP32 nu are suport adecvat pentru slave mode la I2C), mai putin 328PB, care se conecteaza la 32u4 prin I2C si este transmisa mai departe catre ESP32 prin acelasi UART folosit si in comunicatiile 32u4-ESP32 (din lipsa interfetelor seriale). ESP32 functioneaza ca centrala si controlor de logica pentru tot robotul, primind orice date de la modulele care nu sunt conectate in mod direct la el prin biblioteca SerialTransfer library. Acest lucru ne permite sa actualizam codul intr-un singur loc, totusi folosindu-ne in continuare de placie suplimentare, astfel incat sa nu suprasolicitam ESP32, atat ca putere de procesare cat si GPIO/UART.
 
-### Mecanica & modularitate
-Dupa cum e posibil sa stiti, Alset v1 utiliza virare diferentiala si era la o scara mult mai mica. Insa, scopul acestui proiect fiind de proof-of-concept, am decis sa facem Alset v2 cat mai similar cu o masina reala. Folosind un singur motor si viraje tip Ackermann, in acelasi timp fiind mult mai mare (scara 1/10), Alset v2 atinge acest scop cu usurinta.
-
-O alta imbunatatire fata de v1 este modularitatea inalta, permitand adaugarea, indepartarea si inlocuirea simpla a componentelor si oferind acces usor la tot. Baza robotului este atasata la corpul masiniii folosind sistemul standard de clip-uri prezent pe toate masinile RC, oferind montare si demontare rapida si *universala*. Totul restul este conectat cu suruburi, bateriile la terminale cu surub, iar distrbutia greutatii este optimizata pentru experienta de conducere perfecta.
-
-In plus, *tot* ce este necesar pentru utilizarea lui Alset cu *orice* masina RC electrica este conexiunea a *doar doua cabluri* de la receptorul radio al masinii la soclul lor pe placa Alset: cel pentru ESC (controlor electronic de viteza) si cel pentru servomotor. Amandoua sunt apoi controlate de Alset prin PWM si PPM (pulse-position modulation).
-
 ### Viteza automata
 Controlul automat al vitezei este inca in lucru. Scopul este de a permite masinii sa mentina aceeasi viteza indiferent de teren, baterie sau orice alti factori. Momentan, viteza unei roti (in rotatii pe secunda) poate fi masurata cu un senzor optic de viteza conectat la un pin capabil de interrupts de pe 32u4. Algoritmul pentru controlul vitezei in sine ramane sa fie implementat. De asemenea, Un slider pentru setarea intervalului de viteze va fi activat curand.
+
+### Pathfinding
+Pentru evitarea obstacolelor, exista sase senzori ultrasonici: unul in fata, doua la 45 de grade stanga/dreapta in fata, doua in stanga/dreapta si unul in spate. Asezarea curenta a senzorilor a fost aleasa pentru maximizarea acoperirii, vitezei si potentialului de pathfinding. Algoritmul utilizat este unul custom, creat special pentru Alset. Acesta ia in calcul datele de la fiecare senzor si incearca sa aleaga directia optima pentru a evita coliziunile. Senzorii ultrasonici sunt impartiti pe 32u4 si 328PB datorita latentei lor
+
 
 ### Alimentare
 Exista trei surse de alimentare utilizate pe Alset, in felul urmator: masina rc este alimentata de propriul ei battery pack NiMH, circuitul arduino este alimentat de doi acumulatori 18650 in paralel, iar un powerbank alimenteaza raspberry pi-ul si router-ul. Motivele pentru utilizarea a trei surse diferite sunt:
