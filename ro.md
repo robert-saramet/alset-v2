@@ -83,43 +83,42 @@ In plus, *tot* ce este necesar pentru utilizarea lui Alset cu *orice* masina RC 
 ### Viteza automata
 Controlul automat al vitezei este inca in lucru. Scopul este de a permite masinii sa mentina aceeasi viteza indiferent de teren, baterie sau orice alti factori. Momentan, viteza unei roti (in rotatii pe secunda) poate fi masurata cu un senzor optic de viteza conectat la un pin capabil de interrupts de pe 32u4. Algoritmul pentru controlul vitezei in sine ramane sa fie implementat. De asemenea, Un slider pentru setarea intervalului de viteze va fi activat curand.
 
-### Powering
-There are three power sources used on Alset, as follows: RC car is powered by its built-in NiMH battery pack, arduino circuit is powered by two 18650 cells in parallel, and a powerbank provides for the raspberry pi and router. The reasons for this seemingly complicated scheme are:
-- since RC Cars require special battery packs with very high discharge rates and almost no safety features, they are a bad choice for powering anything other than the motors.
-- the arduino circuits cannot procure enough power from usb, plus so many cables would be quite messy
-- for a raspberry pi and router, a commercial powerbank makes much more sense than a custom circuit
-- furthermore, the aforementioned two devices might be considered irrelevant by other users, and may be skipped altogether
-
-In order to charge the batteries of the arduino circuit, just connect a regular usb charger to the module on the board. Do the same for the powerbank. For charging the battery of the RC car, since there are countless charger, battery, and connector types, and since Alset tries to be as cross-platform as possible, you should use the OEM hardware.
+### Alimentare
+Exista trei surse de alimentare utilizate pe Alset, in felul urmator: masina rc este alimentata de propriul ei battery pack NiMH, circuitul arduino este alimentat de doi acumulatori 18650 in paralel, iar un powerbank alimenteaza raspberry pi-ul si router-ul. Motivele pentru utilizarea a trei surse diferite sunt:
+- intrucat masinile RC necesita baterii speciale cu rate de descarcare foarte mari si aproape nicio protectie, acestea nu sunt o alegere buna pentru alimentarea a orice altceva decat motoarele
+- circuitul arduino nu poate procura destul curent prin usb, in plus, ar fi nevoie de multe cabluri
+- pentru raspberry pi si router, un powerbank comercial are mai mult sens decat un circuit special
+- mai mult, cele doua dispozitive mentionate mai sus ar putea fi considerate de alti utilizatori si sarite complet
+Pentru a incarca bateriile circuitului arduino, doar conectati o sursa usb obisnuita la modulul de pe placa. PRocedati la fel pentru powerbank. Pentru incarcarea bateriei masinii RC, intrucat exista nenumarate tipuri de incarcatoare, baterii si conectori, si intrucat Alset incearca sa fie cat mai cross-platform, recomandam sa utilizaati hardware OEM pentru incarcarea masinii.
 
 ### Debugging
-Debugging Alset v2 is made easy by the board design that allows easy testing of electrical connections and quick removal of components, as well as the debug flag available to turn on usb communications for inspecting every value. The LCD screen also displays many of these values, offering helpful insight without the need for a PC. Status LEDS will soon be enabled to further assist in this scope. In addition, all usb ports are placed on the same outer side of the robot to facilitate debugging.
+Debugging-ul lui Alset v2 este facut simplu de design-ul placii, care permite testarea usoara a conexiunilor electrice si indepartarea rapida a componentelor, precum si de flag-ul pentru debugging disponibil pentru activarea comunicatiilor usb, in scopul inspectarii fiecarei valori. Ecranul LCD afiseaza, deasemeanea, multe dintre aceste valori, oferind insight util fara nevoia de un PC. LED-uri de status vor fi in curand activate pentru a asista suplimentar in acest scop. In plus, toate porturile USB sunt pozitionate in aceeasi parte exterioara a robotului pentru a facilita accesul.
 
 ---
 
-### Components
+### Componente
 - [Raspberry Pi 3 B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) (openCV, server)
-- [Sparkfun ESP32 Thing](https://www.sparkfun.com/products/13907) (main processor, comms, IMU)
-- [Pololu A-Star Micro 32u4](https://www.pololu.com/product/3101) (motors, ultrasonic & speed sensors)
-- [Pololu A-Star Micro 328PB](https://www.pololu.com/category/239/a-star-328pb-micro) (GPS, LCD, ultrasonic & voltage/current sensors)
-- [Maverick Quantum MT](https://hpi-racing.ro/automodele-rc/7332-automodel-maverick-quantum-mt-110-brushed-albastru-rtr-rc.html) (RC car)
-- [TP-Link Portable 4G Router](https://www.emag.ro/router-wireless-n300-tp-link-3g-4g-portabil-tl-mr3020/pd/EC23TBBBM/) (optional)
-- [PS4 DualShock Controller](https://www.playstation.com/en-ro/accessories/dualshock-4-wireless-controller/) (primary input)
-- [6x HC-SR04 Ultrasound Sensors](https://cleste.ro/senzor-ultrasonic-hc-sr04.html)
-- [U-blox NEO-6M GPS](https://www.u-blox.com/en/product/neo-6-series)
-- [Adafruit NXP 9DOF IMU](https://www.adafruit.com/product/3463)
-- [2004 I2C LCD](https://cleste.ro/ecran-oled-0-91.html)
-- [Pololu 3.3V/5V Step-Up Regulator](https://www.pololu.com/product/2872/specs)
-- [TP4056 Battery Charger](https://cleste.ro/modul-incarcare-baterii-litiu-1a-usb-c-tp4056.html)
-- [2x Switches](https://cleste.ro/buton-panou.html)
-- [2x I2C Level Shifters](https://cleste.ro/modul-ic-i2c-nivel-conversie.html)
-- [18650 2P Battery Holder](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
-- Some things that are not currently implemented, such as:
-LEDs, level shifters, 8p DIP switch, LED bar graph, buzzer
+- [Sparkfun ESP32 Thing](https://www.sparkfun.com/products/13907) (procesor principal, comunicatii, IMU)
+- [Pololu A-Star Micro 32u4](https://www.pololu.com/product/3101) (motorare, senzori ultrasonici & de viteza)
+- [Pololu A-Star Micro 328PB](https://www.pololu.com/category/239/a-star-328pb-micro) (GPS, LCD, senzori ultrasonici & de tensiune)
+- [Maverick Quantum MT](https://hpi-racing.ro/automodele-rc/7332-automodel-maverick-quantum-mt-110-brushed-albastru-rtr-rc.html) (masina RC)
+- [Router Portabil 4G TP-Link](https://www.emag.ro/router-wireless-n300-tp-link-3g-4g-portabil-tl-mr3020/pd/EC23TBBBM/) (optional)
+- [Controller PS4 DualShock](https://www.playstation.com/en-ro/accessories/dualshock-4-wireless-controller/)
+- [6x Senzori Ultrasonici HC-SR04](https://cleste.ro/senzor-ultrasonic-hc-sr04.html)
+- [GPS U-blox NEO-6M](https://www.u-blox.com/en/product/neo-6-series)
+- [IMU Adafruit NXP 9DOF](https://www.adafruit.com/product/3463)
+- [LCD I2C 20x04](https://cleste.ro/ecran-oled-0-91.html)
+- [Regulator Step-Up Pololu 3.3V/5V](https://www.pololu.com/product/2872/specs)
+- [Incarcator Li-ion TP4056](https://cleste.ro/modul-incarcare-baterii-litiu-1a-usb-c-tp4056.html)
+- [2x Intreupatoare](https://cleste.ro/buton-panou.html)
+- [2x Convertoare Nivel Logic I2C](https://cleste.ro/modul-ic-i2c-nivel-conversie.html)
+- [1Suport Acumulatori 18650 2P](https://www.optimusdigital.ro/ro/suporturi-de-baterii/12108-suport-de-baterii-2-x-18650-conectare-in-paralel.html)
+- Cateva lucruri care nu sunt inca implementate, precum:
+LED-uri, shift registers, intrerupatoare DIP 8p, bara LED, buzzer
 
 ---
 
-### Third Party
+### Resurse
 
 - #### [Mapillary Traffic Sign Dataset](https://www.mapillary.com/dataset/trafficsign)
 - #### [HERE Maps](https://developer.here.com/develop/rest-apis)
@@ -131,7 +130,7 @@ LEDs, level shifters, 8p DIP switch, LED bar graph, buzzer
 
 
 ---
-### License
+### Licenta
 Copyright 2021 Robert Saramet, Bogdan Maciuca
 
 This program is free software: you can redistribute it and/or modify
@@ -149,7 +148,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 ---
 
-### Roles
+### Roluri
 - #### Robert Saramet
   - PS4 Controller
   - Pathfinding
