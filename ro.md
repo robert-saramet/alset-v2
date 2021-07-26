@@ -51,13 +51,13 @@ opencv_traincascade -data YourCascadeFolder/ -vec pos.vec -bg neg.txt -w 24 -h 2
     
 Documentatie completa asupra acestor comenzi puteti gasi pe [site-ul opencv]( https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html).
 
-The final cascade.xml file can be found in `YourCascadeFolder`, as well as the stages (stage0.xml, stage1.xml, stage2.xml etc), which you won't need at the moment. They are mainly used for downgrading your cascade or for saving progress when the training stops unexpectedly.
-Alternatively, you can use the unofficial [GUI version](https://amin-ahmadi.com/cascade-trainer-gui/).
+Fisierul final `cascade.xml` poate fi gasit in `YourCascadeFolder`, impreuna cu stagiile (`stage0.xml`, `stage1.xml`, `stage2.xml` etc), utilizate principal pentru regresarea cascadei sau **salvarea progresului daca programul se opreste neasteptat**.
+Alternativ, puteti utiliza [versiunea neoficiala cu GUI](https://amin-ahmadi.com/cascade-trainer-gui/).
 
-The HAAR cascades are loaded at runtime by the raspberry pi, which uses opencv to recognize the signs captured by the camera. The generated output(position, distance etc) is then processed.
+Cascadele Haar sunt incarcate la pornire de catre raspberry pi, care utilizeaza opencv pentru a identifica semnele de circulatie vazute de camerea. Datele generate (pozitie, distanta) sunt apoi procesate.
 
 ### Lane Following
-This works only on marked roads. It detects centre lines using Canny edge detection. After processing, a geometric line is generated for determining the car's position relative to the road. 
+Functioneaza doar pe drumuri marcate, detectand linia de centru cu algoritmul Canny pentru detectarea marginilor. Dupa procesare, o dreapta geometrica este generata pentru determinarea pozitiei masinii relativ la drum. 
 
 ### GPS
 - ##### **Arduino Side**
