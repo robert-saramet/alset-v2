@@ -5,16 +5,16 @@
 *Alset este o masina autonoma proof-of-concept la scara mica care poate reactiona la semne de circulatie, naviga prin GPS, urmari strazi/benzi si ocoli obstacole. In plus, Alset poate fi utilizat ca un kit complet universal pentru a face orice masina cu radiocomanda inteligenta. Este modular si ofera multa siguranta.*
 
 ### Functii
-- [x] identificarea semnelor de circulatie
-- [x] urmarirea strazii/benzii
-- [x] webapp pentru navigare GPS
-- [x] aplicatie pentru telefon
-- [x] operare prin controller de PS4
-- [x] functii de siguranta redundante
-- [x] evitarea obstacolelor
-- [x] modularitate
-- [x] debugging usor
-- [x] versatilitate
+- [x] Identificarea semnelor de circulatie
+- [x] Urmarirea strazii/benzii
+- [x] Webapp pentru navigare GPS
+- [x] Aplicatie pentru telefon
+- [x] Operare prin controller de PS4
+- [x] Functii de siguranta redundante
+- [x] Evitarea obstacolelor
+- [x] Modularitate
+- [x] Debugging usor
+- [x] Versatilitate
 
 ### To-Do
 - [x] Implementarea mai multor semne
@@ -23,12 +23,12 @@
 - [ ] Detectarea intersectiilor
 - [ ] Slider de viteza (in lucru)
 - [ ] Viteza constanta automata (in lucru)
-- [ ] directii prin TTS pentru GPS
+- [ ] Directii prin TTS pentru GPS
 
 ---
 
 ### Controller
-Alser poate fi condus cu ajutorul unui controller de PS4 conectat prin bluetooth. In acest scop, adresa MAC a consolei aferente controller-ului trebuie obtinuta cu ajutorul [acestei unelte](https://github.com/user-none/sixaxispairer) si atribuit pe ESP32. Pentru a inainta apasati trigger-ul drept. Pentru a frana, apasati atat trigger-ul drept cat si cel stang. Pentru a merge cu spatele, apasati trigger-ul stang. VIteza este proportionala cu forta aplicata pe trigger. Un mod turbo este disponibil prin apasarea butonului triunghi, crescand viteza minima si maxima. In plus, prin apasarea butonului cruce/x, utilizatorul poate schimba intre modul asistat si modul complet manual. In modul manual, utilizatorul controleaza atat acceleratia la motor cat si directia la servo. In modul asistat, utilizatorul ramane in controlul acceleratiei (pentru siguranta), dar directia este controlata de algoritmul de pathfinding cu senzori ultrasonici. Regardless of mode, feedback on distance to obstacles is provided to the user in two ways: first, the RGB leds on the controller fade from green to red depending on distance to nearest object; second, the dual vibration motors of the controller vibrate proportional to the distance to the nearest object on each side (front left and front right).
+Alser poate fi condus cu ajutorul unui controller de PS4 conectat prin bluetooth. In acest scop, adresa MAC a consolei aferente controller-ului trebuie obtinuta cu ajutorul [acestei unelte](https://github.com/user-none/sixaxispairer) si atribuit pe ESP32. Pentru a inainta apasati trigger-ul drept. Pentru a frana, apasati atat trigger-ul drept cat si cel stang. Pentru a merge cu spatele, apasati trigger-ul stang. VIteza este proportionala cu forta aplicata pe trigger. Un mod turbo este disponibil prin apasarea butonului triunghi, crescand viteza minima si maxima. In plus, prin apasarea butonului cruce/x, utilizatorul poate schimba intre modul asistat si modul complet manual. In modul manual, utilizatorul controleaza atat acceleratia la motor cat si directia la servo. In modul asistat, utilizatorul ramane in controlul acceleratiei (pentru siguranta), dar directia este controlata de algoritmul de pathfinding cu senzori ultrasonici. Indiferent de mod, feedback on distance to obstacles is provided to the user in two ways: first, the RGB leds on the controller fade from green to red depending on distance to nearest object; second, the dual vibration motors of the controller vibrate proportional to the distance to the nearest object on each side (front left and front right).
 
 ### Safety
 Three individual switches for motors, arduino circuit and raspberry pi + router allow for easy testing without any risks, as well as disabling features not currently desired (e.g. disabling raspberry pi when not using opencv). If any device loses power while driving or if signal is lost or too outdated, the car stops immediately.
