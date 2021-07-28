@@ -1,7 +1,7 @@
 ## Main architecture
 
 ---
-#### *Please note that some parts of this page are outdated*
+#### *Please note that some parts of this page are outdated.*
 ---
 
 ### 1. Boards
