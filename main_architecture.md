@@ -1,4 +1,9 @@
 ## Main architecture
+
+---
+#### *Please note that some parts of this page are outdated*
+---
+
 ### 1. Boards
 <h4>
      <ul>
