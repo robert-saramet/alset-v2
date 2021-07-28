@@ -41,13 +41,13 @@ Next, a pos.txt file must be created containing all the positive image filenames
 For example:
 
 ```
-openv_createsamples -info pos.txt -w 24 -h 24 -num 1000 -vec pos.vec
+opencv_createsamples -info pos.txt -w 24 -h 24 -num 1000 -vec pos.vec
 ```
 
 With the .vec file you've just created and a neg.txt file containing all the negative images filenames, you can use the `opencv_traincascade` program:
 
 ```shell
-opencv_traincascade -data YourCascadeFolder/ -vec pos.vec -bg neg.txt -w 24 -h 24 -numPos YourNumOfPosImg, -numNeg YourNumOfNegImg
+opencv_traincascade -data YourCascadeFolder/ -vec pos.vec -bg neg.txt -w 24 -h 24 -numPos YourNumOfPosImg -numNeg YourNumOfNegImg
 ```
     
 Complete documention on these commands can be found on the [opencv website]( https://docs.opencv.org/3.4/dc/d88/tutorial_traincascade.html).
