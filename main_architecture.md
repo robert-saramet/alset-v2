@@ -8,7 +8,7 @@
 <h4>
      <ul>
          <li> <span class="esp32"> Sparkfun Thing ESP32 </span> (main MCU) </li>
-         <li> Pololu A-Star Micro (ultrasonic & line sensors) </li>
+         <li> Pololu A-Star Micro (motors, ultrasonic & speed sensors) </li>
          <li> Raspberry Pi 3 or 4 (openCV, Blynk server, flashing) </li>
     </ul>
 </h4>
@@ -18,13 +18,9 @@
     - front center
     - front left
     - front right
-    - back
-- 4x proximity sensors
-    - front
-    - left
-    - right
-    - back
-- line sensor
+    - left center
+    - right center
+    - back center
 
 ### 3. Comms
 - Raspberry Pi => HW UART => Thing
