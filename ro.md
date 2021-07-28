@@ -10,6 +10,7 @@
 - [x] Webapp pentru navigare GPS
 - [x] Aplicatie pentru telefon
 - [x] Operare prin controller de PS4
+- [x] Live stream FPV de mare viteza
 - [x] Functii de siguranta redundante
 - [x] Evitarea obstacolelor
 - [x] Modularitate
