@@ -6,6 +6,7 @@
 ### Features
 - [x] Traffic sign detection
 - [x] Road/lane following
+- [x] High-speed FPV live stream
 - [x] Extensive communications
 - [x] Redundant safety features
 - [x] PS4 controller support
