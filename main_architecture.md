@@ -1,7 +1,7 @@
 ## Main architecture
 
 ---
-#### *Please note that some parts of this page might be outdated or incomplete.*
+#### *Please note that some parts of this page are outdated.*
 ---
 
 ### 1. Boards
@@ -66,9 +66,9 @@
     - Perform shutdown functions on low voltage
 - Obstacles
     - if any distance changes by at least 2 cm since last read
-        - if distF >= 60 and distFL & distFR >= 60 and distL & distR >= 40
+        - if distF >= 60 and (distFL and distFR >= 60) and (distL & distR >= 40)
             - go straight forward
-         - else if distF < 60 and distFL | distFR < 60 or distL | distR < 40
+         - else if distF < 60 and (distFL or distFR < 60) or (distL or distR < 40)
              - if distFL > distFR and distL > distR
                  - if going forward steer left
                  - if going in reverse steer right
@@ -84,9 +84,9 @@
                  - else if distLFL < distRFR
                      - if going forward steer left
                      - if going in reverse steer right
-         - else if distFL | distFR <= 40 and distL | distR <= 25
+         - else if (distFL or distFR <= 40) and (distL or distR <= 25)
              - same as above
-         - else if distFL | distFR <= 10 or distL | distR <= 5
+         - else if (distFL or distFR <= 10) or (distL or distR <= 5)
              - brake and wait for 200 ms
              - read all sensors again
              - if any value is not the same
