@@ -61,7 +61,7 @@ Alternativ, puteti utiliza [versiunea neoficiala cu GUI](https://amin-ahmadi.com
 Cascadele Haar sunt incarcate la pornire de catre raspberry pi, care utilizeaza opencv pentru a identifica semnele de circulatie vazute de camerea. Datele generate (pozitie, distanta) sunt apoi procesate.
 
 ### Urmarirea strazii
-Functioneaza doar pe drumuri marcate, detectand linia de centru cu algoritmul Canny pentru detectarea marginilor. Dupa procesare (convertirea la grayscale, blurarea si aplicarea de edge detection pentru obtinerea contururilor), o lista de drepte geometrice este generata pentru determinarea pozitiei masinii relativ la drum. In viitor, acele drepte vor fi combinate, iar linia finala va decide directia masinii. Astfel, viraje medii viraje vor functiona fara asistenta de la utilizator. Totusi, pe drumuri care nu sunt marcate corespunzator, se poate obtine comportament neasteptat.
+Functioneaza doar pe drumuri marcate, detectand linia de centru cu algoritmul Canny pentru detectarea marginilor. Dupa procesare (convertirea la grayscale, blurarea si aplicarea de edge detection pentru obtinerea contururilor), o lista de drepte geometrice este generata pentru determinarea pozitiei masinii relativ la drum. Acesti vectori sunt apoi adunati, iar vectorul final va decide directia masinii. Astfel, virajele medii vor functiona fara asistenta de la utilizator. Totusi, pe drumuri care nu sunt marcate corespunzator, se poate obtine comportament neasteptat.
 
 ### Siguranta
 Trei intrerupatoare individuale pentru motoare, circuitul cu arduino si raspberry pi + router permit testarea usoara si fara risc, oferind si posibilitatea dezactivarii functiilor momentan nedorite (ex. dezactivarea raspberry pi-ului cand nu se foloseste opencv). Daca orice dispozitiv se opreste in timpul operarii sau daca semnalul este pierdut sau prea invechit, masina opreste instant.
@@ -173,5 +173,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ---
 
 ### Support us
+# Un leu avetz un leu
 - ##### BTC: bc1q9zjrnzd04w27sx4d0hy9n06hu624dmvjc495wc
 [![219971756-519102119360658-4905840849781814643-n.png](https://i.postimg.cc/nLCd65GD/219971756-519102119360658-4905840849781814643-n.png)](https://postimg.cc/JyCcXpgr)
