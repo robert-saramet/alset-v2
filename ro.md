@@ -173,6 +173,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 ---
 
 ### Support us
-# Un leu avetz un leu
 - ##### BTC: bc1q9zjrnzd04w27sx4d0hy9n06hu624dmvjc495wc
 [![219971756-519102119360658-4905840849781814643-n.png](https://i.postimg.cc/nLCd65GD/219971756-519102119360658-4905840849781814643-n.png)](https://postimg.cc/JyCcXpgr)
